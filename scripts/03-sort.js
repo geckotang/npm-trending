@@ -1,6 +1,6 @@
 var fs = require('fs')
 var path = require('path')
-var yesterday = require('../utils/yesterday')
+var yesterday = require('../lib/utils/yesterday')
 var file = path.join(__dirname, '../.cache', yesterday + '.json')
 var data = JSON.parse(fs.readFileSync(file))
 

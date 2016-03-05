@@ -3,8 +3,8 @@ var path = require('path')
 var express = require('express')
 var render = require('ejs').render
 var app = express()
-var trending = require('./trending')
-var tpl = fs.readFileSync(path.join(__dirname, '../tpl/index.ejs'), 'utf8')
+var trending = require('../lib/trending')
+var tpl = fs.readFileSync(path.join(__dirname, 'tpl/index.ejs'), 'utf8')
 
 function getTrending (page) {
   var opt = {offset: Number(page) * 25}
