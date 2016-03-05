@@ -1,0 +1,31 @@
+{
+  "name": "npm-trending",
+  "version": "0.0.1",
+  "description": "trending in npm registry",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "standard lib/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/watilde/npm-trending.git"
+  },
+  "keywords": [
+    "trend"
+  ],
+  "author": "Daijiro Wachi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/watilde/npm-trending/issues"
+  },
+  "homepage": "https://github.com/watilde/npm-trending#readme",
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "object-assign": "^4.0.1",
+    "request": "^2.69.0",
+    "touch": "^1.0.0"
+  },
+  "devDependencies": {
+    "standard": "^6.0.7"
+  }
+}
