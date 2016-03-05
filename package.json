@@ -4,6 +4,7 @@
   "description": "trending in npm registry",
   "main": "lib/index.js",
   "scripts": {
+    "start": "node lib/index.js",
     "test": "standard lib/**/*.js"
   },
   "repository": {
@@ -20,6 +21,8 @@
   },
   "homepage": "https://github.com/watilde/npm-trending#readme",
   "dependencies": {
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
     "mkdirp": "^0.5.1",
     "object-assign": "^4.0.1",
     "request": "^2.69.0",
