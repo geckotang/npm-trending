@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "batch": "node scripts/01-yesterday-json.js && node scripts/02-downloads.js && node scripts/03-sort.js",
+    "prestart": "npm run batch",
     "start": "node app/index.js",
     "test": "standard lib/**/*.js app/index.js"
   },
