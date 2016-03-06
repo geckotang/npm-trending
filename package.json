@@ -1,6 +1,6 @@
 {
   "name": "npm-trending",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "trending in npm registry",
   "main": "lib/index.js",
   "scripts": {
