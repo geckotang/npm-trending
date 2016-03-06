@@ -13,7 +13,8 @@ function getTrending (page) {
 }
 
 app.get('/', function (req, res) {
-  res.type('.html').send(render(tpl))
+  var trend = getTrending(0)
+  res.type('.html').send(render(tpl, {pkg: trend}))
 })
 
 app.get('/page/:number', function (req, res) {
@@ -21,7 +22,8 @@ app.get('/page/:number', function (req, res) {
   var hasOnlyNumber =  /^[0-9]*$/.test(page)
   if (!hasOnlyNumber) res.status(404).send('/page/:number can has only Number')
   var trend = getTrending(page)
-  res.type('.html').send(render(tpl))
+  if (Object.keys(trend).length === 0) res.status(418).send("I'm a teapot.")
+  res.type('.html').send(render(tpl, {pkg: trend}))
 })
 
 app.listen(3000, function () {

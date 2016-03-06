@@ -4,8 +4,8 @@
   "description": "trending in npm registry",
   "main": "lib/index.js",
   "scripts": {
-    "start": "node lib/index.js",
-    "test": "standard lib/**/*.js"
+    "start": "node app/index.js",
+    "test": "standard lib/**/*.js app/index.js"
   },
   "repository": {
     "type": "git",

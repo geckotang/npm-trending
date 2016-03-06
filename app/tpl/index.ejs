@@ -2,15 +2,85 @@
 <html>
 <head>
   <title>Trending packages on npm yesterday</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="The place where all things npm are documented">
-  <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic|Source+Code+Pro:400,600,700" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" type="text/css" href="/styles/index.css">
-  <link rel="shortcut icon" href="/images/favicon.ico"  type="image/x-icon" />
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="/js/main.js"></script>
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="//code.getmdl.io/1.1.2/material.blue_grey-pink.min.css" />
+  <script src="//code.getmdl.io/1.1.2/material.min.js"></script>
+  <style>
+  body {
+    margin-bottom: 56px;
+  }
+  #next {
+    position: fixed;
+    display: block;
+    right: 0;
+    bottom: 0;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    z-index: 900;
+  }
+  </style>
 </head>
 <body>
-<h1>test</h1>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title">npm<i class="material-icons">trending_up</i>trending</span>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <a class="mdl-navigation__link" href="https://github.com/watilde/npm-trending">Fork</a>
+          <a class="mdl-navigation__link" href="https://twitter.com/watilde">Author</a>
+          <a class="mdl-navigation__link" href="https://npmjs.com">npm</a>
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">npm<i class="material-icons">trending_up</i>trending</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="https://github.com/watilde/npm-trending">Fork</a>
+        <a class="mdl-navigation__link" href="https://twitter.com/watilde">Author</a>
+        <a class="mdl-navigation__link" href="https://npmjs.com">npm</a>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <ul class="demo-list-three mdl-list">
+          <% Object.keys(pkg).forEach(function (item) { %>
+            <li class="mdl-list__item mdl-list__item--three-line">
+              <span class="mdl-list__item-primary-content">
+                <span>
+                  <a href="https://npmjs.com/package/<%= pkg[item].name %>" target="_blank">
+                    <%= pkg[item].name %>
+                  </a>
+                </span>
+                <span class="mdl-list__item-text-body">
+                <%= pkg[item].description %>
+                </span>
+              </span>
+              <span class="mdl-list__item-secondary-content">
+              <%= pkg[item].downloads %> downloads
+              </span>
+            </li>
+          <% }) %>
+        </ul>
+        <button id="next" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+          <i class="material-icons">keyboard_arrow_right</i>
+        </button>
+      </div>
+    </main>
+  </div>
+  <script>
+    var next = document.getElementById('next')
+    next.addEventListener('click', function () {
+      if (location.pathname === '/') {
+        location.pathname = '/page/1'
+      } else {
+        var page = Number(location.pathname.split('/').pop())
+        page += 1
+        location.pathname = '/page/' + page  
+      }
+    })
+  </script>
 </body>
 </html>
