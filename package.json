@@ -4,7 +4,9 @@
   "description": "trending in npm registry",
   "main": "lib/index.js",
   "scripts": {
+    "batch": "node scripts/01-yesterday-json.js && node scripts/02-downloads.js && node scripts/03-sort.js",
     "start": "node app/index.js",
+    "production": "NODE_ENV=production node app/index.js",
     "test": "standard lib/**/*.js app/index.js"
   },
   "repository": {
