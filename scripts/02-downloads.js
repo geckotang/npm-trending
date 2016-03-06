@@ -17,6 +17,7 @@ var opt = {
 }
 var out = []
 
+
 async.forEach(trends, function(pkg, cb) {
   request(assign({url: url + yesterday + '/' + pkg.name}, opt), function (e, res) {
     console.log('fetch: ', url + yesterday + '/' + pkg.name)
