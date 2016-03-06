@@ -12,15 +12,6 @@ function getTrending (page) {
   return data
 }
 
-app.configure('development', function(){
-  app.set('port', process.env.PORT || 3000);
-  app.use(express.errorHandler());
-});
-
-app.configure('production', function(){
-  app.set('port', process.env.PORT || 80);
-});
-
 app.get('/', function (req, res) {
   var trend = getTrending(0)
   res.type('.html').send(render(tpl, {pkg: trend}))
@@ -35,6 +26,5 @@ app.get('/page/:number', function (req, res) {
   res.type('.html').send(render(tpl, {pkg: trend}))
 })
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+app.listen(process.env.PORT || 3000, function () {
 })
