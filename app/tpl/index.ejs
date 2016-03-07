@@ -11,14 +11,22 @@
   .mdl-mini-footer {
     padding-bottom: 75px;
   }
+  #back,
   #next {
     position: fixed;
     display: block;
-    right: 0;
     bottom: 0;
-    margin-right: 20px;
     margin-bottom: 15px;
     z-index: 900;
+  }
+  #back {
+    left: 0;
+    margin-left: 20px;
+  }
+  #next {
+    right: 0;
+    margin-left: 0;
+    margin-right: 20px;
   }
   </style>
 </head>
@@ -66,6 +74,9 @@
             </li>
           <% }) %>
         </ul>
+        <button id="back" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+          <i class="material-icons">keyboard_arrow_left</i>
+        </button>
         <button id="next" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
           <i class="material-icons">keyboard_arrow_right</i>
         </button>
@@ -84,6 +95,19 @@
   </div>
   <script>
     var next = document.getElementById('next')
+    var back = document.getElementById('back')
+    if (location.pathname === '/') {
+      back.style.display = 'none'
+    }
+    back.addEventListener('click', function () {
+      if (location.pathname === '/page/1') {
+        location.pathname = '/'
+      } else {
+        var page = Number(location.pathname.split('/').pop())
+        page -= 1
+        location.pathname = '/page/' + page
+      }
+    })
     next.addEventListener('click', function () {
       if (location.pathname === '/') {
         location.pathname = '/page/1'
